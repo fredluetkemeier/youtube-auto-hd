@@ -4,7 +4,6 @@
 
   import ControlQuality from "./views/ControlQuality.svelte";
   import ControlSize from "./views/ControlSize.svelte";
-  import Promotions from "./views/Promotions.svelte";
   import "./views/styles/popup.css";
 
   export let qualitiesStored;
@@ -29,6 +28,4 @@
   {#if isDesktop}
     <ControlSize {isResizeVideo} {sizeVideo} />
   {/if}
-
-  <Promotions />
 </MaterialApp>

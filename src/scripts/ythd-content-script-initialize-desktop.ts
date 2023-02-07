@@ -6,7 +6,6 @@ import {
   SELECTORS
 } from "../shared-scripts/ythd-utilities";
 import type { QualityFpsPreferences, VideoAutoResize, VideoQuality, VideoSize } from "../types";
-import { injectDonationSectionWhenNeeded } from "./ythd-content-script-donate";
 import { prepareToChangeQualityOnDesktop } from "./ythd-content-script-functions-desktop";
 import { resizePlayerIfNeeded } from "./ythd-content-script-resize";
 
@@ -34,8 +33,6 @@ function addTemporaryBodyListenerOnDesktop(): void {
 
   gTitleLast = document.title;
   gUrlLast = location.href;
-
-  injectDonationSectionWhenNeeded();
 
   // Typically - listen to the player div (<video> container)
   // Otherwise, suppose it's a main channel page that has a channel trailer,
@@ -128,7 +125,6 @@ async function init(): Promise<void> {
       return;
     }
 
-    injectDonationSectionWhenNeeded();
     resizePlayerIfNeeded();
     await prepareToChangeQualityOnDesktop();
     elVideo.addEventListener("canplay", prepareToChangeQualityOnDesktop);
